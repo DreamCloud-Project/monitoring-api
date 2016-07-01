@@ -1,0 +1,10 @@
+# RELEASE NOTES
+
+## 16.7 (01/07/16)
+- Updated API to be compatible with the latest monitoring server (16.6)
+- Removed redundant API functions such as register_workflow
+
+
+## 15.7 (31/07/15)
+- Initial version of the RheonMedia demo agent
+- Extended monitoring API with additional functionality to filter statistics by key (e.g., `host_type`) and date (cf. `from` and `to`)
