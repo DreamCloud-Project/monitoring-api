@@ -31,11 +31,9 @@ installation, or by exploiting the shared database located at
 `http://mf.excess-project.eu:3030`. It is recommend to use the shared database,
 because no further setup is required for testing, except the following modules:
 
---------------------
-Module     Version
----------- ---------
-Python     >= 2.7.x
---------------------
+| Module    | Version  |
+| --------- | -------- |
+| Python    | >= 2.7.x |
 
 If you intend to use you local installation of Elasticsearch, you will also
 need to install your own `monitoring-server`. Please execute the following
@@ -94,25 +92,16 @@ The following typical queries will retrieve information previously sent to
 the database (example for workflow `rm_stream`, task `task1` and experiment ID
 `AVWmZDVZHfnWt6JXwLDl`):
 
---------------------------------------------------------------------------------------------------------------------------------------
-Example Query                                                         Comment
--------------------------------------------------------------------- -----------------------------------------------------------------
-GET /v1/dreamcloud/mf/workflows                                       Retrieve information about stored workflows (e.g., `rm_stream`)
-
-GET /v1/dreamcloud/mf/workflows/rm_stream                             Get detailed information about the `rm_stream` workflow
-
-GET /v1/dreamcloud/mf/experiments?workflows=rm_stream&details         Get detailed information for each experiment
-
-GET /v1/mf/profiles/rm_stream/task1/AVWmZDVZHfnWt6JXwLDl                 Get specific profiling information for experiment `AVWmZDVZHfnWt6JXwLDl`
-
-GET /v1/dreamcloud/mf/profiles/rm_stream/task1/AVWmZDVZHfnWt6JXwLDl      Get profile information (i.e., actual metric data)
-
-GET /v1/dreamcloud/mf/deployments/rm_stream/task1/embedded               Get all deployment plans used for a workflow and task on a given platform (here: embedded)
-
-GET /v1/dreamcloud/mf/summary/rm_stream/task1/embedded                   Get summary information for all experiments performed on that platform
-
-GET /v1/dreamcloud/mf/statistics/rm_stream/task1?metric=execution_time   Get statistics for a given metric, here `execution_time`
---------------------------------------------------------------------------------------------------------------------------------------
+| Example Query | Comment |
+| ------------- | ------- |
+| `GET /v1/dreamcloud/mf/workflows` | Retrieve information about stored workflows (e.g., `rm_stream`) |
+| `GET /v1/dreamcloud/mf/workflows/rm_stream` | Get detailed information about the `rm_stream` workflow |
+| `GET /v1/dreamcloud/mf/experiments?workflows=rm_stream&details` | Get detailed information for each experiment |
+| `GET /v1/mf/profiles/rm_stream/task1/AVWmZDVZHfnWt6JXwLDl` | Get specific profiling information for experiment `AVWmZDVZHfnWt6JXwLDl` |
+| `GET /v1/dreamcloud/mf/profiles/rm_stream/task1/AVWmZDVZHfnWt6JXwLDl` | Get profile information (i.e., actual metric data) |
+| `GET /v1/dreamcloud/mf/deployments/rm_stream/task1/embedded` | Get all deployment plans used for a workflow and task on a given platform (here: embedded) |
+| `GET /v1/dreamcloud/mf/summary/rm_stream/task1/embedded` | Get summary information for all experiments performed on that platform |
+| `GET /v1/dreamcloud/mf/statistics/rm_stream/task1?metric=execution_time` | Get statistics for a given metric, here `execution_time` |
 
 
 ## Deployment Plans/Configuration
@@ -152,27 +141,17 @@ Example plan:
 The following statistics are aggregated via the `/mf/summary` or
 `mf/statistics` routes:
 
---------------------------------------------------------------------------------
-Name of statistic            Comment
----------------------------- ---------------------------------------------------
-count                        Number of experiments stored in the database
-
-min                          Minimum value
-
-max                          Maximum value
-
-avg                          Mean value
-
-sum                          Sum of all values
-
-sum_of_squares               Sum of squares
-
-variance                     Variance
-
-std_deviation                Standard deviation
-
-std_deviation_bounds         Standard deviation bounds (upper and lower)
---------------------------------------------------------------------------------
+| Name of statistic | Comment |
+| ----------------- | ------- |
+| count                        | Number of experiments stored in the database |
+| min                          | Minimum value |
+| max                          | Maximum value |
+| avg                          | Mean value |
+| sum                          | Sum of all values |
+| sum_of_squares               | Sum of squares |
+| variance                     | Variance |
+| std_deviation                | Standard deviation |
+| std_deviation_bounds         | Standard deviation bounds (upper and lower) |
 
 
 The response includes experiment information associated with both the minimum
