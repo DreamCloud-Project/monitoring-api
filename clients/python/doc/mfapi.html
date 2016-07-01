@@ -1,0 +1,362 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mfapi</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mfapi</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/hopped/hlrs/codebase/dreamcloud/monitoring-api/clients/python/mfapi.py">/home/hopped/hlrs/codebase/dreamcloud/monitoring-api/clients/python/mfapi.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;declares&nbsp;the&nbsp;<a href="#API">API</a>&nbsp;for&nbsp;the&nbsp;monitoring&nbsp;framework.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="mfapi.html#API">API</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="mfapi.html#ExploringAPI">ExploringAPI</a>
+</font></dt><dt><font face="helvetica, arial"><a href="mfapi.html#ProfilingAPI">ProfilingAPI</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="API">class <strong>API</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Interface&nbsp;to&nbsp;provide&nbsp;access&nbsp;to&nbsp;the&nbsp;monitoring&nbsp;database.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;(optional)<br>
+&nbsp;&nbsp;debug:&nbsp;The&nbsp;debug&nbsp;level&nbsp;as&nbsp;imposed&nbsp;by&nbsp;the&nbsp;logging&nbsp;module&nbsp;(optional)<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;(optional)<br>
+&nbsp;&nbsp;debug:&nbsp;The&nbsp;debug&nbsp;level&nbsp;as&nbsp;imposed&nbsp;by&nbsp;the&nbsp;logging&nbsp;module&nbsp;(optional)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="API-__init__"><strong>__init__</strong></a>(self, url<font color="#909090">=None</font>, debug<font color="#909090">=None</font>)</dt><dd><tt>Initializes&nbsp;the&nbsp;<a href="#API">API</a>.<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;appropriate&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework,&nbsp;and&nbsp;sets<br>
+the&nbsp;corresponding&nbsp;debug&nbsp;level.&nbsp;The&nbsp;base&nbsp;URL&nbsp;is&nbsp;appended&nbsp;by&nbsp;the&nbsp;service<br>
+prefix&nbsp;for&nbsp;subsequent&nbsp;requests.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;(optional)<br>
+&nbsp;&nbsp;agent:&nbsp;A&nbsp;layer&nbsp;to&nbsp;store&nbsp;information&nbsp;on&nbsp;where&nbsp;the&nbsp;data&nbsp;is&nbsp;coming&nbsp;from<br>
+&nbsp;&nbsp;host:&nbsp;Unique&nbsp;identifier&nbsp;of&nbsp;the&nbsp;device&nbsp;the&nbsp;agent&nbsp;job&nbsp;was&nbsp;completed<br>
+&nbsp;&nbsp;platform:&nbsp;Type&nbsp;of&nbsp;host&nbsp;(e.g.,&nbsp;VM&nbsp;server,&nbsp;FPGA1,&nbsp;PI,&nbsp;...)<br>
+&nbsp;&nbsp;debug:&nbsp;The&nbsp;debug&nbsp;level&nbsp;as&nbsp;imposed&nbsp;by&nbsp;the&nbsp;logging&nbsp;module&nbsp;(optional)</tt></dd></dl>
+
+<dl><dt><a name="API-check_url"><strong>check_url</strong></a>(self, url)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;given&nbsp;URL&nbsp;is&nbsp;valid.<br>
+&nbsp;<br>
+Performs&nbsp;a&nbsp;simple&nbsp;GET&nbsp;request&nbsp;on&nbsp;the&nbsp;given&nbsp;URL;&nbsp;expects&nbsp;status&nbsp;code&nbsp;200.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework</tt></dd></dl>
+
+<dl><dt><a name="API-set_host"><strong>set_host</strong></a>(self, host_id)</dt></dl>
+
+<dl><dt><a name="API-set_platform"><strong>set_platform</strong></a>(self, platform)</dt></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="API-urljoin"><strong>urljoin</strong></a>(*args)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>deployments</strong> = 'deployments'</dl>
+
+<dl><dt><strong>experiments</strong> = 'experiments'</dl>
+
+<dl><dt><strong>metrics</strong> = 'metrics'</dl>
+
+<dl><dt><strong>profiles</strong> = 'profiles'</dl>
+
+<dl><dt><strong>progress</strong> = 'progress'</dl>
+
+<dl><dt><strong>runtime</strong> = 'runtime'</dl>
+
+<dl><dt><strong>statistics</strong> = 'statistics'</dl>
+
+<dl><dt><strong>workflows</strong> = 'workflows'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExploringAPI">class <strong>ExploringAPI</strong></a>(<a href="mfapi.html#API">API</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#API">API</a>&nbsp;for&nbsp;the&nbsp;DreamCloud&nbsp;Monitoring&nbsp;Framework.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;implements&nbsp;the&nbsp;protocol&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;using<br>
+the&nbsp;underlying&nbsp;RESTful&nbsp;web&nbsp;service&nbsp;provided.&nbsp;For&nbsp;more&nbsp;information&nbsp;on&nbsp;the<br>
+<a href="#API">API</a>,&nbsp;please&nbsp;have&nbsp;a&nbsp;look&nbsp;at&nbsp;the&nbsp;official&nbsp;<a href="#API">API</a>&nbsp;specification.<br>
+&nbsp;<br>
+Note:<br>
+&nbsp;&nbsp;This&nbsp;<a href="#API">API</a>&nbsp;is&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;metric&nbsp;data&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;(optional)<br>
+&nbsp;&nbsp;debug:&nbsp;The&nbsp;debug&nbsp;level&nbsp;as&nbsp;imposed&nbsp;by&nbsp;the&nbsp;logging&nbsp;module&nbsp;(optional)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="mfapi.html#ExploringAPI">ExploringAPI</a></dd>
+<dd><a href="mfapi.html#API">API</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ExploringAPI-__init__"><strong>__init__</strong></a>(self, url<font color="#909090">=None</font>, debug<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="ExploringAPI-get_profile"><strong>get_profile</strong></a>(self, workflow_id, task_id, experiment_id)</dt><dd><tt>GET&nbsp;/mf/profiles/:workID/:taskID/:expID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_profiles"><strong>get_profiles</strong></a>(self, workflow_id, task_id<font color="#909090">=None</font>)</dt><dd><tt>GET&nbsp;/mf/profiles/:workID/:taskID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_progress"><strong>get_progress</strong></a>(self, workflow_id, task_id, experiment_id)</dt><dd><tt>GET&nbsp;/mf/progress/:workID/:taskID/:expID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_runtime"><strong>get_runtime</strong></a>(self, workflow_id, task_id, experiment_id)</dt><dd><tt>GET&nbsp;/mf/runtime/:workID/:taskID/:expID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_statistics"><strong>get_statistics</strong></a>(self, workflow_id, metric)</dt><dd><tt>GET&nbsp;/mf/statistics/:workID?metric=metric</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_total_runtime"><strong>get_total_runtime</strong></a>(self, workflow_id, experiment_id)</dt><dd><tt>GET&nbsp;/mf/runtime/:workID/:expID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_workflow"><strong>get_workflow</strong></a>(self, workflow_id)</dt><dd><tt>GET&nbsp;/mf/workflows/:workID.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-get_workflows"><strong>get_workflows</strong></a>(self, details<font color="#909090">=None</font>)</dt><dd><tt>GET&nbsp;/mf/workflows.</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-handle_request"><strong>handle_request</strong></a>(self, url)</dt><dd><tt>Handles&nbsp;requests.<br>
+&nbsp;<br>
+Note:<br>
+&nbsp;&nbsp;This&nbsp;method&nbsp;is&nbsp;only&nbsp;used&nbsp;internally.&nbsp;If&nbsp;a&nbsp;requests&nbsp;failed,&nbsp;the&nbsp;program<br>
+&nbsp;&nbsp;exits&nbsp;with&nbsp;the&nbsp;corresponding&nbsp;error&nbsp;message.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;URL&nbsp;to&nbsp;be&nbsp;accessed.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><a name="ExploringAPI-check_url"><strong>check_url</strong></a>(self, url)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;given&nbsp;URL&nbsp;is&nbsp;valid.<br>
+&nbsp;<br>
+Performs&nbsp;a&nbsp;simple&nbsp;GET&nbsp;request&nbsp;on&nbsp;the&nbsp;given&nbsp;URL;&nbsp;expects&nbsp;status&nbsp;code&nbsp;200.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework</tt></dd></dl>
+
+<dl><dt><a name="ExploringAPI-set_host"><strong>set_host</strong></a>(self, host_id)</dt></dl>
+
+<dl><dt><a name="ExploringAPI-set_platform"><strong>set_platform</strong></a>(self, platform)</dt></dl>
+
+<hr>
+Static methods inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><a name="ExploringAPI-urljoin"><strong>urljoin</strong></a>(*args)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><strong>deployments</strong> = 'deployments'</dl>
+
+<dl><dt><strong>experiments</strong> = 'experiments'</dl>
+
+<dl><dt><strong>metrics</strong> = 'metrics'</dl>
+
+<dl><dt><strong>profiles</strong> = 'profiles'</dl>
+
+<dl><dt><strong>progress</strong> = 'progress'</dl>
+
+<dl><dt><strong>runtime</strong> = 'runtime'</dl>
+
+<dl><dt><strong>statistics</strong> = 'statistics'</dl>
+
+<dl><dt><strong>workflows</strong> = 'workflows'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ProfilingAPI">class <strong>ProfilingAPI</strong></a>(<a href="mfapi.html#API">API</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#API">API</a>&nbsp;for&nbsp;the&nbsp;DreamCloud&nbsp;Monitoring&nbsp;Framework.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;implements&nbsp;the&nbsp;protocol&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;using<br>
+the&nbsp;underlying&nbsp;RESTful&nbsp;web&nbsp;service&nbsp;provided.&nbsp;For&nbsp;more&nbsp;information&nbsp;on&nbsp;the<br>
+<a href="#API">API</a>,&nbsp;please&nbsp;have&nbsp;a&nbsp;look&nbsp;at&nbsp;the&nbsp;official&nbsp;<a href="#API">API</a>&nbsp;specification.<br>
+&nbsp;<br>
+Note:<br>
+&nbsp;&nbsp;This&nbsp;<a href="#API">API</a>&nbsp;is&nbsp;used&nbsp;to&nbsp;send&nbsp;metric&nbsp;data&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework&nbsp;(optional)<br>
+&nbsp;&nbsp;debug:&nbsp;The&nbsp;debug&nbsp;level&nbsp;as&nbsp;imposed&nbsp;by&nbsp;the&nbsp;logging&nbsp;module&nbsp;(optional)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="mfapi.html#ProfilingAPI">ProfilingAPI</a></dd>
+<dd><a href="mfapi.html#API">API</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ProfilingAPI-__init__"><strong>__init__</strong></a>(self, url<font color="#909090">=None</font>, debug<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="ProfilingAPI-add_deployment_plan"><strong>add_deployment_plan</strong></a>(self, workflow_id, task_id, platform, experiment_id, data)</dt><dd><tt>Adds&nbsp;new&nbsp;deployment&nbsp;plan&nbsp;information.<br>
+&nbsp;<br>
+Registers&nbsp;a&nbsp;new&nbsp;deployment&nbsp;plan&nbsp;on&nbsp;the&nbsp;monitoring&nbsp;database.&nbsp;Deployment<br>
+plans&nbsp;are&nbsp;linked&nbsp;to&nbsp;the&nbsp;current&nbsp;workflow&nbsp;ID,&nbsp;task&nbsp;ID,&nbsp;platform,&nbsp;and<br>
+experiment&nbsp;ID.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;workflow_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;representing&nbsp;the&nbsp;workflow&nbsp;to&nbsp;be&nbsp;registered&nbsp;(e.g.,&nbsp;'ms2_v2')<br>
+&nbsp;&nbsp;task_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;representing&nbsp;a&nbsp;specific&nbsp;task&nbsp;within&nbsp;the&nbsp;workflow&nbsp;(e.g.,&nbsp;'task_1')<br>
+&nbsp;&nbsp;platform:&nbsp;Target&nbsp;platform&nbsp;where&nbsp;the&nbsp;task&nbsp;will&nbsp;be&nbsp;executed&nbsp;(e.g.,&nbsp;'hpc_cluster')<br>
+&nbsp;&nbsp;experiment_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;as&nbsp;returned&nbsp;by&nbsp;the&nbsp;function&nbsp;'new_experiment'<br>
+&nbsp;&nbsp;data:&nbsp;JSON&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;be&nbsp;stored&nbsp;at&nbsp;the&nbsp;monitoring&nbsp;database&nbsp;(the&nbsp;actual&nbsp;deployment&nbsp;plan)<br>
+Returns:<br>
+&nbsp;&nbsp;a&nbsp;deployment&nbsp;plan&nbsp;ID<br>
+Raises:<br>
+&nbsp;&nbsp;Exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurred&nbsp;while&nbsp;contacting&nbsp;the&nbsp;database</tt></dd></dl>
+
+<dl><dt><a name="ProfilingAPI-bulk_update"><strong>bulk_update</strong></a>(self, bulk_data)</dt><dd><tt>Sends&nbsp;metric&nbsp;data&nbsp;to&nbsp;the&nbsp;monitoring&nbsp;database;&nbsp;bulk&nbsp;method.<br>
+&nbsp;<br>
+Please&nbsp;refer&nbsp;to&nbsp;the&nbsp;update&nbsp;method&nbsp;for&nbsp;further&nbsp;information.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;bulk_data:&nbsp;array&nbsp;of&nbsp;metric&nbsp;data&nbsp;for&nbsp;the&nbsp;same&nbsp;experiment&nbsp;and&nbsp;workflow<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;Exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurred&nbsp;while&nbsp;contacting&nbsp;the&nbsp;database</tt></dd></dl>
+
+<dl><dt><a name="ProfilingAPI-extend_data"><strong>extend_data</strong></a>(self, data, task_id)</dt></dl>
+
+<dl><dt><a name="ProfilingAPI-new_experiment"><strong>new_experiment</strong></a>(self, workflow_id, data)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;experiment&nbsp;for&nbsp;the&nbsp;given&nbsp;workflow&nbsp;ID.<br>
+&nbsp;<br>
+Registers&nbsp;a&nbsp;new&nbsp;workflow&nbsp;at&nbsp;the&nbsp;monitoring&nbsp;database&nbsp;by&nbsp;using&nbsp;a&nbsp;unique<br>
+workflow&nbsp;ID&nbsp;and&nbsp;the&nbsp;given&nbsp;JSON&nbsp;<a href="__builtin__.html#object">object</a>.&nbsp;If&nbsp;successful,&nbsp;a&nbsp;new&nbsp;experiment<br>
+is&nbsp;created&nbsp;to&nbsp;allow&nbsp;sending&nbsp;metric&nbsp;data.&nbsp;Please&nbsp;note&nbsp;that&nbsp;if&nbsp;the<br>
+workflow&nbsp;ID&nbsp;already&nbsp;exists&nbsp;in&nbsp;the&nbsp;database,&nbsp;the&nbsp;data&nbsp;will&nbsp;be&nbsp;overridden<br>
+with&nbsp;new&nbsp;data&nbsp;provided.&nbsp;The&nbsp;JSON&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;neither&nbsp;parsed&nbsp;or&nbsp;checked,<br>
+and&nbsp;will&nbsp;be&nbsp;inserted&nbsp;into&nbsp;the&nbsp;database&nbsp;as&nbsp;is.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;workflow_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;representing&nbsp;the&nbsp;workflow&nbsp;to&nbsp;be&nbsp;registered&nbsp;(e.g.,&nbsp;'ms2_v2')<br>
+&nbsp;&nbsp;data:&nbsp;JSON&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;be&nbsp;stored&nbsp;at&nbsp;the&nbsp;monitoring&nbsp;database&nbsp;(e.g.,&nbsp;{&nbsp;'application':&nbsp;'molecular&nbsp;dynamics'&nbsp;})<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;an&nbsp;experiment&nbsp;ID<br>
+Raises:<br>
+&nbsp;&nbsp;Exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurred&nbsp;while&nbsp;contacting&nbsp;the&nbsp;database</tt></dd></dl>
+
+<dl><dt><a name="ProfilingAPI-update"><strong>update</strong></a>(self, workflow_id, experiment_id, data, task_id<font color="#909090">=None</font>)</dt><dd><tt>Sends&nbsp;metric&nbsp;data&nbsp;to&nbsp;the&nbsp;monitoring&nbsp;database.<br>
+&nbsp;<br>
+Sends&nbsp;the&nbsp;given&nbsp;metric&nbsp;data&nbsp;(JSON&nbsp;<a href="__builtin__.html#object">object</a>)&nbsp;to&nbsp;the&nbsp;monitoring&nbsp;database.&nbsp;In<br>
+order&nbsp;to&nbsp;associate&nbsp;the&nbsp;data&nbsp;with&nbsp;the&nbsp;corresponding&nbsp;workflow,&nbsp;the&nbsp;workflow<br>
+ID,&nbsp;experiment&nbsp;ID,&nbsp;and&nbsp;the&nbsp;task&nbsp;ID&nbsp;(only&nbsp;required&nbsp;if&nbsp;the&nbsp;application&nbsp;is<br>
+workflow-based)&nbsp;have&nbsp;to&nbsp;be&nbsp;specified&nbsp;as&nbsp;well.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;workflow_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;representing&nbsp;the&nbsp;workflow&nbsp;to&nbsp;be&nbsp;registered&nbsp;(e.g.,&nbsp;'ms2_v2')<br>
+&nbsp;&nbsp;experiment_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;as&nbsp;returned&nbsp;by&nbsp;the&nbsp;function&nbsp;'new_experiment'<br>
+&nbsp;&nbsp;data:&nbsp;JSON&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;be&nbsp;stored&nbsp;at&nbsp;the&nbsp;monitoring&nbsp;database<br>
+&nbsp;&nbsp;task_id:&nbsp;A&nbsp;unique&nbsp;ID&nbsp;representing&nbsp;a&nbsp;specific&nbsp;task&nbsp;within&nbsp;the&nbsp;workflow&nbsp;(e.g.,&nbsp;'task_1')<br>
+Raises:<br>
+&nbsp;&nbsp;Exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurred&nbsp;while&nbsp;contacting&nbsp;the&nbsp;database</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><a name="ProfilingAPI-check_url"><strong>check_url</strong></a>(self, url)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;given&nbsp;URL&nbsp;is&nbsp;valid.<br>
+&nbsp;<br>
+Performs&nbsp;a&nbsp;simple&nbsp;GET&nbsp;request&nbsp;on&nbsp;the&nbsp;given&nbsp;URL;&nbsp;expects&nbsp;status&nbsp;code&nbsp;200.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;url:&nbsp;The&nbsp;base&nbsp;URL&nbsp;to&nbsp;access&nbsp;the&nbsp;monitoring&nbsp;framework</tt></dd></dl>
+
+<dl><dt><a name="ProfilingAPI-set_host"><strong>set_host</strong></a>(self, host_id)</dt></dl>
+
+<dl><dt><a name="ProfilingAPI-set_platform"><strong>set_platform</strong></a>(self, platform)</dt></dl>
+
+<hr>
+Static methods inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><a name="ProfilingAPI-urljoin"><strong>urljoin</strong></a>(*args)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mfapi.html#API">API</a>:<br>
+<dl><dt><strong>deployments</strong> = 'deployments'</dl>
+
+<dl><dt><strong>experiments</strong> = 'experiments'</dl>
+
+<dl><dt><strong>metrics</strong> = 'metrics'</dl>
+
+<dl><dt><strong>profiles</strong> = 'profiles'</dl>
+
+<dl><dt><strong>progress</strong> = 'progress'</dl>
+
+<dl><dt><strong>runtime</strong> = 'runtime'</dl>
+
+<dl><dt><strong>statistics</strong> = 'statistics'</dl>
+
+<dl><dt><strong>workflows</strong> = 'workflows'</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-exit"><strong>exit</strong></a>(...)</dt><dd><tt><a href="#-exit">exit</a>([status])<br>
+&nbsp;<br>
+Exit&nbsp;the&nbsp;interpreter&nbsp;by&nbsp;raising&nbsp;SystemExit(status).<br>
+If&nbsp;the&nbsp;status&nbsp;is&nbsp;omitted&nbsp;or&nbsp;None,&nbsp;it&nbsp;defaults&nbsp;to&nbsp;zero&nbsp;(i.e.,&nbsp;success).<br>
+If&nbsp;the&nbsp;status&nbsp;is&nbsp;an&nbsp;integer,&nbsp;it&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;system&nbsp;exit&nbsp;status.<br>
+If&nbsp;it&nbsp;is&nbsp;another&nbsp;kind&nbsp;of&nbsp;<a href="__builtin__.html#object">object</a>,&nbsp;it&nbsp;will&nbsp;be&nbsp;printed&nbsp;and&nbsp;the&nbsp;system<br>
+exit&nbsp;status&nbsp;will&nbsp;be&nbsp;one&nbsp;(i.e.,&nbsp;failure).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DEBUG</strong> = 10<br>
+<strong>WARNING</strong> = 30<br>
+<strong>stderr</strong> = &lt;open file '&lt;stderr&gt;', mode 'w'&gt;</td></tr></table>
+</body></html>

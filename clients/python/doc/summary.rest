@@ -1,0 +1,100 @@
+// GLOBAL SETTINGS
+http://mf.excess-project.eu:3030
+Accept: application/json
+--
+
+#
+# (1) Send the deployment plan to the monitoring framework
+#
+# PUT /v1/dreamcloud/mf/deployments/:workflow_id/:task_id/:platform_id/:experiment_id
+#
+# Required:
+# - workflow id, e.g. ms2
+# - task id, e.g. t2.1
+# - platform id, e.g. test_cluster
+# - experiment id, e.g. AVS-vzfnGMPeuCn4T2HZ
+#
+# Example request:
+--
+PUT /v1/dreamcloud/mf/deployments/ms2/t2.1/test_cluster/AVS-vzfnGMPeuCn4T2HZ
+{
+  "estimatedTime":217,
+  "node":{
+    "id":"node01",
+    "cpus":[
+      {
+        "id":"cpu0",
+        "cores":[
+          {
+            "id":"core0",
+            "pwMode":100
+          },
+          {
+            "id":"core1",
+            "pwMode":100
+          },
+          {
+            "id":"core2",
+            "pwMode":100
+          },
+          {
+            "id":"core3",
+            "pwMode":100
+          }
+        ]
+      }
+    ]
+  }
+}
+
+# Example response (includes URL for GET and the deployment id)
+#
+# {
+#  "deployment_id": "da117e8171ae58b935a02a9768c21ce96ffd5f6e"
+#  "predicted_time": 2017
+#  "href": "http://mf.excess-project.eu:3030/v1/dreamcloud/mf/deployments/ms2/t2.1/test_cluster/da117e8171ae58b935a02a9768c21ce96ffd5f6e"
+# }
+
+
+# (2) GET all deployment plans for a given workflow, task, and platform
+#
+# GET /v1/dreamcloud/mf/deployments/:workflow_id/:task_id/:platform_id
+#
+# Required:
+# - workflow id, e.g. ms2
+# - task id, e.g. t2.1
+# - platform id, e.g. test_cluster
+#
+# Example request:
+--
+GET /v1/dreamcloud/mf/deployments/ms2/t2.1/test_cluster
+
+#
+# (3) GET history information of experiments (includes experiments of all deployment plans)
+#
+# GET /v1/dreamcloud/mf/summary/:workflow_id/:task_id/:platform_id
+#
+# Required:
+# - workflow id, e.g. ms2
+# - task id, e.g. t2.1
+# - platform id, e.g. test_cluster
+#
+# Example request:
+--
+GET /v1/dreamcloud/mf/summary/ms2/t2.1/test_cluster
+
+#
+# (4) GET history information of experiments of a given deployment plan
+#
+# GET /v1/dreamcloud/mf/summary/:workflow_id/:task_id/:platform_id/:deployment_id
+#
+# Required:
+# - workflow id, e.g. ms2
+# - task id, e.g. t2.1
+# - platform id, e.g. test_cluster
+# - deployment_id, e.g. 4e165a82309000fd5a6ab20c097b2e9f2ba5216d
+#
+# Example request:
+--
+GET /v1/dreamcloud/mf/summary/ms2/t2.1/test_cluster/4e165a82309000fd5a6ab20c097b2e9f2ba5216d
+
