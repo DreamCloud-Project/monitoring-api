@@ -16,7 +16,9 @@ def send_metric_data(workflow_id, experiment_id, task_id, platform_id):
       {
         '@timestamp': datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S.%f')[:-3],
         'energy': randint(40, 140),
-        'execution_time': randint(10, 90)
+        'execution_time': randint(10, 90),
+        'platform': platform_id,
+        'info_channel': 'BBC1'
       },
       task_id
     )
@@ -30,11 +32,13 @@ api = ProfilingAPI('http://localhost:3030', debuglevel);
 
 # (2) REGISTER A NEW EXPERIMENT --> EXPERIMENT ID
 workflow_id = 'rm_stream'
+experiment_id = 'myUniqueID'
 task_ids = [ 'task1', 'task2' ]
 platforms = [ 'embedded', 'hpc' ]
 
-experiment_id = api.new_experiment(
-  workflow_id,  # rm_stream
+experiment_id = api.register_experiment(
+  workflow_id,  # rm_stream,
+  experiment_id,
   {
     'description': 'Streaming application',
     'optimization': 'Time',
