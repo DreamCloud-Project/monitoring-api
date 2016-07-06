@@ -52,6 +52,8 @@ class API(object):
     self.agent = None
     self.host = None
     self.platform = None
+    getLogger("urllib3").setLevel(WARNING)
+    getLogger("requests").setLevel(WARNING)
 
   def check_url(self, url):
     """Checks if the given URL is valid.
@@ -98,6 +100,28 @@ class ProfilingAPI(API):
     API.__init__(self, url, debug)
     self.headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
+  def register_experiment(self, workflow_id, experiment_id, data):
+    """Register a new experiment using the given experiment ID.
+
+      Registers a new workflow at the monitoring database by using a unique
+      workflow ID and the given JSON object. If successful, a new experiment
+      is created to allow sending metric data. Please note that if the
+      workflow ID already exists in the database, the data will be overridden
+      with new data provided. The JSON object is neither parsed or checked,
+      and will be inserted into the database as is.
+
+      Args:
+        workflow_id: A unique ID representing the workflow to be registered (e.g., 'ms2_v2')
+        experiment_id: A unique ID that refers to the current experiment.
+        data: JSON object to be stored at the monitoring database (e.g., { 'application': 'molecular dynamics' })
+
+      Returns:
+        an experiment ID
+      Raises:
+        Exception if an error occurred while contacting the database
+    """
+    return self.__call_workflows(workflow_id, experiment_id, data)
+
   def new_experiment(self, workflow_id, data):
     """Creates a new experiment for the given workflow ID.
 
@@ -117,10 +141,16 @@ class ProfilingAPI(API):
       Raises:
         Exception if an error occurred while contacting the database
     """
+    return self.__call_workflows(workflow_id, None, data)
+
+  def __call_workflows(self, workflow_id, experiment_id, data):
     debug('register workflow and create experiment ...')
     workflow_id = workflow_id.lower()
     data['wf_id'] = workflow_id
-    workflow_url = self.urljoin(self.url, self.workflows)
+    if experiment_id is None:
+      workflow_url = self.urljoin(self.url, self.workflows)
+    else:
+      workflow_url = self.urljoin(self.url, self.workflows, workflow_id, experiment_id)
     request = put(workflow_url, data=to_json(data), headers=self.headers)
     if request.status_code == 200:
       info('[ workflow_id: ' + workflow_id + ' ]')
