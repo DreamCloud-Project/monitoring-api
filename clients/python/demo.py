@@ -25,43 +25,31 @@ def send_metric_data(workflow_id, experiment_id, task_id, platform_id):
     sleep(1)
 
 
-debuglevel = INFO
+debuglevel = DEBUG
 
 # (1) INITIALIZE API
 api = ProfilingAPI('http://localhost:3030', debuglevel);
 
 # (2) REGISTER A NEW EXPERIMENT --> EXPERIMENT ID
 workflow_id = 'rm_stream'
-experiment_id = 'myUniqueID'
-task_ids = [ 'task1', 'task2' ]
+experiment_id = 'Raj-20160708-21510002'
+task_ids = [ 'iphone' ]
 platforms = [ 'embedded', 'hpc' ]
 
 experiment_id = api.register_experiment(
   workflow_id,  # rm_stream,
   experiment_id,
   {
-    'description': 'Streaming application',
-    'optimization': 'Time',
+    'application': 'Streaming application',
     'author': 'Raj Patel',
-    'tasks': [
-      {
-        'name': 'task1',
-        'exec': '/home/ubuntu/task1.sh',
-        'cores_nr': '1-2'
-      },
-      {
-        'name': 'task2',
-        'exec': '/home/ubuntu/task2.sh',
-        'cores_nr': '1-4'
-      }
-    ]
+    'task': 'iphone'
   }
 )
 
 # (3) ADD DEPLOYMENT PLANS FOR EXPERIMENT --> DEPLOYMENT ID
-deployment_id_task1 = api.add_deployment_plan(
+deployment_id_iphone = api.add_deployment_plan(
   workflow_id,   # rm_stream
-  task_ids[0],   # task_id1
+  task_ids[0],   # iphone
   platforms[0],  # embedded
   experiment_id, # ASDasdkjas123314sa
   {
@@ -87,43 +75,7 @@ deployment_id_task1 = api.add_deployment_plan(
   }
 )
 
-deployment_id_task2 = api.add_deployment_plan(
-  workflow_id,   # rm_stream
-  task_ids[1],   # task_id2
-  platforms[1],  # hpc
-  experiment_id, # ASDnasdaj12981jklADsa
-  {
-    'estimatedTime': 217,
-    'node': {
-      'id': 'embedded_device',
-      'cpus': [
-        {
-          'id': 'cpu0',
-          'cores': [
-            {
-              'id': 'core0',
-              'pwMode': 100
-            },
-            {
-              'id': 'core1',
-              'pwMode': 100
-            },
-            {
-              'id': 'core2',
-              'pwMode': 50
-            },
-            {
-              'id': 'core3',
-              'pwMode': 50
-            }
-          ]
-        }
-      ]
-    }
-  }
-);
-
 # (4) SENDING METRIC DATA; BOUND TO WORKFLOW_ID, EXPERIMENT_ID, TASK_ID
 send_metric_data(workflow_id, experiment_id, task_ids[0], platforms[0]);
-send_metric_data(workflow_id, experiment_id, task_ids[1], platforms[1]);
+send_metric_data(workflow_id, experiment_id, task_ids[0], platforms[1]);
 
