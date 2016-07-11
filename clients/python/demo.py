@@ -28,7 +28,7 @@ def send_metric_data(workflow_id, experiment_id, task_id, platform_id):
 debuglevel = DEBUG
 
 # (1) INITIALIZE API
-api = ProfilingAPI('http://localhost:3030', debuglevel);
+api = ProfilingAPI('http://mf.excess-projectu.eu:3030', debuglevel);
 
 # (2) REGISTER A NEW EXPERIMENT --> EXPERIMENT ID
 workflow_id = 'rm_stream'
